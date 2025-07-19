@@ -34,6 +34,11 @@ print (columns)
 X = df[["total_day_charge", "total_eve_charge"]].values
 y = df["churn"].values
 
+#############################################################################################
+# We choose the n_neighbors. This is one hyperparameter which might help to tune the model.
+# Choose correct hyperparameter after trying multiple values. This is called Hyper-parameter tuning
+# While doing hyper-parameter tuning, we do cross-validation.
+#############################################################################################
 knn = KNeighborsClassifier(n_neighbors=7)
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.3, random_state=21, stratify=y)
 knn.fit(X_train,y_train)
@@ -43,3 +48,7 @@ print (confusion_matrix(y_test, y_pred))
 
 print ("############## Classification report ##############")
 print (classification_report(y_test, y_pred))
+
+#########################################################################
+# One of the hyper-parameter tuning method : Grid-search cross validation 
+#########################################################################
