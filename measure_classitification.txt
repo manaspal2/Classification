@@ -1,0 +1,27 @@
+To measure classification models, there are certain parameters that could help us to decide how well the model is performing with the test data.
+For instance, we are trying to identify a fraudulent transaction using a classification model.
+
++-----------+--------------------------------+
+|           | REAL LABEL                     |
++-----------+----------+----------+----------+
+| PREDICTED |          | TRUE     | FALSE    |
+|           +----------+----------+----------+
+| LABEL     | POSITIVE | True     | False    |
+|           |          | Positive | Positive |
+|           +----------+----------+----------+
+|           | NEGATIVE | True     | False    |
+|           |          | Negative | Negative |
++-----------+----------+----------+----------+
+
+
+In this current scenario, True Positive means the transaction is fraudulent and correctly identified as fraud.
+True negatives are those which is fraudulent, but the model didn’t identify as fraud.
+False positives are those that are not fraudulent, but the model has identified them as fraudulent. 
+False negatives are those that are not fraudulent, and the model also didn’t find them fraudulent. 
+Three critical parameters are used to evaluate the model performance
+
+Recall = TP / (TP + FN)
+
+Precision = TP / (TP + FP)
+
+Accuracy = (TP + FN) / (TP + TN + FP + FN)
