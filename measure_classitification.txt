@@ -25,3 +25,45 @@ Recall = TP / (TP + FN)
 Precision = TP / (TP + FP)
 
 Accuracy = (TP + FN) / (TP + TN + FP + FN)
+
+Regression Model performance dependes on:-
+1. Root mean square error
+2. R-square
+
+Classification model performance depends on:-
+1. Accuracy
+2. Confusion metrix
+3. Precision, Recall and F1-Score
+4. ROC AUC Curve
+
+Scaling data is needed most of the tinme before evaluating the performance of the model.
+
+Steps pf evaluating the classification model:-
+
+1. Import all the necessary packages.
+2. Choose the target variable, drop that from the rest of the dataframe. Use the rest of the dataframe values to create a numpy array. That will be feature variables.
+3. Choose the target variable and select that data to create a numpy array using that values. That will be target variable.
+4. Split the dataset into train and test dataset.
+5. Create a scalar object.
+6. Scale the train variables using fit_transform.
+7. Scale the test variables using transform.
+8. Create a dictionary where use the model names as keys and instantiate the models as dictionary values. Example;
+
+model = {"knn" : KNeighborsClassifier(),
+        "log_reg": "LogisticRegression()"
+        }
+
+9. Create a result variable as list.
+
+result = []
+
+10. Run the models and find the cross_val_scor from each model.
+
+for model in model.values():
+    kf = KFold(n_splits=5, shuffle=True, random_state=42)
+    scores = cross_val_score(model, X_train_scaled, y_train, cv=kf)
+    result.append(scores)
+
+11. Create a boxplot using the result.
+12. Find which model has the bext median score.
+13. Fine the accuracy of the metric in case accuracy is important for the model.
